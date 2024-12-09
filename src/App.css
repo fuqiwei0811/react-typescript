@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+/* テキストの自動拡大を無効化 */
+body {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* 基本設定 */
+* {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* ページ全体の設定 */
+#rootDIV {
+    display: grid;
+    grid-template-columns: 20px repeat(4, 1fr) 20px;
+    grid-template-rows:
+        [headerROW] 40px [informationROW] auto [addComponentROW] auto [searchComponentROW] auto [memolistROW] auto;
+    grid-row-gap: 20px;
+    row-gap: 20px;
+    font-family: sans-serif;
+}
+
+/* パーツの配置*/
+#rootDIV>* {
+    grid-column: 2 / -2;
+}
+
+/* ヘッダー */
+header {
+    grid-row: headerROW;
+    justify-self: center;
+    align-self: center;
+    font-size: 40px;
+    color: #555d6b;
+    font-family: 'Raleway', sans-serif;
+}
+
+header+p {
+    grid-row: informationROW;
+    justify-self: left;
+    align-self: center;
+    font-size: 25px;
+    color: #ec0606;
+    font-family: 'Raleway', sans-serif;
+}
+
+#AddComponentDIV {
+    grid-row: addComponentROW;
+    align-self: center;
+}
+
+#SearchComponentDIV {
+    grid-row: searchComponentROW;
+    align-self: center;
+}
+
+#memoListDIV {
+    grid-row: memolistROW;
+}
+
+/* 全体のテーブルのスタイル */
+table {
+    width: 100%;
+    /* テーブルの幅を親要素に合わせる */
+    border-collapse: collapse;
+    /* セルの境界線を重ねて表示 */
+    margin: 20px 0;
+    /* 上下のマージンを設定 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* テーブルに影を付ける */
+}
+
+/* ヘッダー行のスタイル */
+th {
+    background-color: #4CAF50;
+    /* ヘッダーの背景色 */
+    color: white;
+    /* ヘッダーの文字色 */
+    padding: 12px 15px;
+    /* ヘッダーのパディング */
+    text-align: left;
+    /* ヘッダーの文字を左揃え */
+    font-weight: bold;
+    /* ヘッダー文字を太字 */
+}
+
+/* セルのスタイル */
+td {
+    padding: 12px 15px;
+    /* セルのパディング */
+    border: 1px solid #ddd;
+    /* セルの境界線 */
+    text-align: left;
+    /* セルの文字を左揃え */
+}
+
+/* 奇数行の背景色 */
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+    /* 奇数行の背景色 */
+}
+
+/* 行にマウスホバー時のスタイル */
+tr:hover {
+    background-color: #f1f1f1;
+    /* ホバー時の背景色 */
+    cursor: pointer;
+    /* マウスカーソルをポインターに変更 */
+}
+
+/* テーブル、ヘッダー、セルの境界線スタイル */
+table,
+th,
+td {
+    border: 1px solid #ddd;
+    /* 境界線を薄いグレーで設定 */
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 600px) {
+    table {
+        width: 100%;
+        /* スクリーンが小さいとき、テーブルの幅を100%に */
+        font-size: 14px;
+        /* フォントサイズを小さく */
+    }
+
+    th,
+    td {
+        padding: 8px;
+        /* セルのパディングを調整 */
+    }
+}
+
+/* フォームのスタイル */
+form {
+    display: flex;
+    gap: 10px;
+    /* 入力フィールドとボタンの間隔 */
+    flex-wrap: wrap;
+    /* スクリーンサイズに応じてラップ */
+}
+
+/* テキスト入力フィールドのスタイル */
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 70%;
+    /* 入力フィールドの幅 */
+    font-size: 14px;
+    /* フォントサイズ */
+}
+
+/* 送信ボタンのスタイル */
+input[type="submit"],
+input[type="button"] {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    /* 緑色の背景 */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    /* マウスカーソル */
+    transition: background-color 0.3s ease;
+    /* 背景色の変化に遷移を追加 */
+}
+
+/* 送信ボタンのホバー効果 */
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #45a049;
+    /* ホバー時の緑色の濃い背景 */
+}
+
+/* 「クリア」ボタンの背景色 */
+input[type="button"] {
+    background-color: #f44336;
+    /* 赤色の背景 */
+}
+
+/* 「クリア」ボタンのホバー効果 */
+input[type="button"]:hover {
+    background-color: #e53935;
+    /* ホバー時の赤色の濃い背景 */
+}
+
+/* レスポンシブデザイン：小さな画面でのフォーム調整 */
+@media screen and (max-width: 600px) {
+    form {
+        flex-direction: column;
+        /* 小さなスクリーンでは要素を縦に並べる */
+    }
+
+    input[type="text"] {
+        width: 100%;
+        /* 入力フィールドの幅を100%に */
+    }
+
+    input[type="submit"],
+    input[type="button"] {
+        width: 100%;
+        /* ボタンの幅を100%に */
+        margin-top: 10px;
+        /* ボタン間のマージン */
+    }
+}
